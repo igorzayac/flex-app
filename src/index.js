@@ -20,8 +20,6 @@ const rootReducer = combineReducers({
     flex: Flex.FlexReducer,
 });
 
-console.log(rootReducer);
-
 // eslint-disable-next-line
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -51,7 +49,9 @@ window.onload = () => {
 function renderApp(manager) {
   ReactDOM.render(
     <Provider store={customStore}>
-      <App manager={manager} />
+      <Flex.ContextProvider manager={manager}>
+        <App />
+      </Flex.ContextProvider>
     </Provider>,
     mountNode
   );
